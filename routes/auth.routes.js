@@ -20,20 +20,20 @@ const saltRounds = 10;
 router.post("/signup", (req, res, next) => {
   const { email, password, name } = req.body;
 
-  // Check if email or password or name are provided as empty strings
+  
   if (email === "" || password === "" || name === "") {
     res.status(400).json({ message: "Provide email, password and name" });
     return;
   }
 
-  // This regular expression check that the email is of a valid format
+  
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   if (!emailRegex.test(email)) {
     res.status(400).json({ message: "Provide a valid email address." });
     return;
   }
 
-  // This regular expression checks password for special characters and minimum length
+  
   const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if (!passwordRegex.test(password)) {
     res.status(400).json({
